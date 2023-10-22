@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "MuseoModerno";
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg,#27d0ff,#2519ff);
+    padding: 10px;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.1);
+}
+
+.todo-app{
+    width: 100%;
+    max-width: 545px; 
+    background-color: rgb(115, 221, 228);
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+
+.todo-app h2{
+    color: #2519ff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+input{
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    padding: 10px;
+    color: black;
+}
+
+button{
+    border: none;
+    outline: none;
+    background: rgb(255, 108, 82);
+    padding: 16px 50px;
+    color: white;
+    font-size: 16px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 392px) {
+    button {
+        padding: 16px 30px; /* Smaller padding */
+        font-size: 14px; /* Smaller font size */
+    }
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    position: relative;
+}
+
+ul li::before{
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(./images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+
+ul li.checked{
+    color: rgb(119, 117, 117);
+    text-decoration: line-through;
+}
