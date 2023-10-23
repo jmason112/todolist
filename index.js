@@ -28,7 +28,7 @@ function toggleChecked(event) {
 }
 
 function saveListState() {
-    var listItems = document.querySelectorAll('#myList li');
+    var listItems = document.querySelectorAll('#list-container li');
     var listState = Array.from(listItems).map(li => ({
         text: li.textContent,
         checked: li.classList.contains('checked')
@@ -38,7 +38,7 @@ function saveListState() {
 
 function restoreListState() {
     var listState = JSON.parse(localStorage.getItem('listState'));
-    var myList = document.getElementById('myList');
+    var myList = document.getElementById('list-container');
     if (listState) {
         myList.innerHTML = '';  // Clear the current list
         listState.forEach(item => {
@@ -53,7 +53,7 @@ function restoreListState() {
 }
 
 // Set up the event listener on the parent list
-var myList = document.getElementById('myList');
+var myList = document.getElementById('list-container');
 myList.addEventListener('click', toggleChecked);
 
 // Restore the list state when the page is loaded
