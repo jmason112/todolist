@@ -53,6 +53,7 @@ input{
     height: 40px;
     padding: 10px;
     color: black;
+    font-size: min(16px, 1em);
 }
 
 button{
@@ -118,5 +119,5 @@ ul li span{
 ul li span:hover{
     cursor: pointer;
     background: gray;
-    
+
 }
