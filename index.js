@@ -15,42 +15,47 @@ function addValue()
     textInput.value=""
     
 }
-
 function toggleChecked(event) {
     var listItem = event.target;
-    if (listItem.tagName.toLowerCase() === 'li') {  // Ensure the clicked element is a list item
+    if (listItem.tagName.toLowerCase() === 'li') {
         if (listItem.classList.contains('checked')) {
-            listItem.classList.remove('checked');  // Uncheck if already checked
+            listItem.classList.remove('checked');
         } else {
-            listItem.classList.add('checked');  // Check if not already checked
+            listItem.classList.add('checked');
         }
         saveListState();
     }
 }
 
 function saveListState() {
-    var listItems = document.querySelectorAll('#list-container li')
-    var listState = Array.from(listItems).map(li => li.classList.contains('checked'));
+    var listItems = document.querySelectorAll('#myList li');
+    var listState = Array.from(listItems).map(li => ({
+        text: li.textContent,
+        checked: li.classList.contains('checked')
+    }));
     localStorage.setItem('listState', JSON.stringify(listState));
 }
 
 function restoreListState() {
     var listState = JSON.parse(localStorage.getItem('listState'));
+    var myList = document.getElementById('myList');
     if (listState) {
-        var listItems = document.querySelectorAll('#list-container li');
-        listItems.forEach((li, index) => {
-            if (listState[index]) {
+        myList.innerHTML = '';  // Clear the current list
+        listState.forEach(item => {
+            var li = document.createElement('li');
+            li.textContent = item.text;
+            if (item.checked) {
                 li.classList.add('checked');
             }
+            myList.appendChild(li);
         });
     }
 }
 
 // Set up the event listener on the parent list
-var myList = document.getElementById('list-container');
+var myList = document.getElementById('myList');
 myList.addEventListener('click', toggleChecked);
 
 // Restore the list state when the page is loaded
 window.addEventListener('load', restoreListState);
-
 
